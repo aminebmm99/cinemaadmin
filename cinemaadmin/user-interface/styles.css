@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #141414;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+
+nav {
+  padding: 16px 40px;
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  color: #e50914;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+nav span {
+  color: #ccc;
+  cursor: pointer;
+}
+
+nav span:hover {
+  color: white;
+}
+
+
+.page {
+  display: none;
+  padding: 30px 40px;
+}
+
+.page.active {
+  display: block;
+}
+
+
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.film-card {
+  background: #1f1f1f;
+  border-radius: 6px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.film-card:hover {
+  background: #2a2a2a;
+}
+
+.genre {
+  background: #e50914;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+
+.back-btn,
+.btn-back-home {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background: #e50914;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+}
+
+
+.seances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.seance-btn {
+  background: #1f1f1f;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.seance-btn.selected {
+  border: 1px solid #e50914;
+}
+
+
+.resa-form {
+  display: none;
+  background: #1f1f1f;
+  padding: 20px;
+  max-width: 400px;
+}
+
+.resa-form.visible {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counter button {
+  width: 30px;
+  height: 30px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.confirm-box {
+  background: #1f1f1f;
+  padding: 30px;
+  max-width: 400px;
+}
+
+.code {
+  font-size: 22px;
+  color: #e50914;
+  margin: 15px 0;
+}
