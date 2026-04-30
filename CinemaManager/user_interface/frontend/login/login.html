@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+  </div>
+  <div class="grid"></div>
+
+  <div class="card">
+
+    <div class="card-top-nav">
+      <a href="../index/index.html" class="btn-link-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        Retour à l’accueil
+      </a>
+    </div>
+
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <h1 id="card-title">Bienvenue</h1>
+      <p class="subtitle" id="card-sub">Connectez-vous à votre espace</p>
+    </div>
+
+    <!-- Connexion -->
+    <div id="login-panel">
+      <form id="login-form" onsubmit="handleSubmit(event)">
+
+        <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <div class="input-wrap">
+            <input type="text" id="username" placeholder="Pseudo..." required autocomplete="username" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-wrap">
+            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <button type="button" class="eye-btn" id="eye-btn" onclick="togglePwd()" title="Afficher/masquer">
+              <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">
+          Se connecter
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Création de compte (même page) -->
+    <div id="signup-panel" hidden>
+      <form id="signup-form" onsubmit="handleSignup(event)">
+
+        <div class="form-group">
+          <label for="signup-username">Nom d'utilisateur</label>
+          <div class="input-wrap">
+            <input type="text" id="signup-username" placeholder="Choisissez un pseudo..." required
+              autocomplete="username" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+        </div>
+
+        <section class="form-section" aria-labelledby="signup-email-heading">
+          <h2 class="form-section-title" id="signup-email-heading">Adresse e-mail</h2>
+          <div class="form-group">
+            <label for="signup-email">E-mail</label>
+            <div class="input-wrap">
+              <input type="email" id="signup-email" placeholder="exemple@email.com" required autocomplete="email" />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="signup-phone-heading">
+          <h2 class="form-section-title" id="signup-phone-heading">Numéro de téléphone</h2>
+          <div class="form-group">
+            <label for="signup-phone">Téléphone</label>
+            <div class="input-wrap">
+              <input type="tel" id="signup-phone" placeholder="+216 XX XXX XXX" required autocomplete="tel" />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-group">
+          <label for="signup-password">Mot de passe</label>
+          <div class="input-wrap">
+            <input type="password" id="signup-password" placeholder="••••••••" required autocomplete="new-password" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <button type="button" class="eye-btn" id="signup-eye-btn"
+              onclick="togglePwd('signup-password','signup-eye-icon')" title="Afficher/masquer">
+              <svg id="signup-eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-confirm-password">Confirmer le mot de passe</label>
+          <div class="input-wrap">
+            <input type="password" id="signup-confirm-password" placeholder="••••••••" required
+              autocomplete="new-password" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="signup-submit-btn" style="margin-top: 8px;">
+          Créer mon compte
+        </button>
+
+      </form>
+    </div>
+
+    <div class="divider">ou</div>
+
+    <a href="../index/index.html" class="btn-ghost" id="btn-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" style="width:16px;height:16px;">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+      Retour à l’accueil sans connexion
+    </a>
+
+    <div class="card-footer" id="footer-login" style="margin-top: 20px;">
+      Pas encore de compte ?
+      <button type="button" class="link-btn" id="btn-show-signup">Créer un compte</button>
+    </div>
+
+    <div class="card-footer" id="footer-signup" style="margin-top: 20px;" hidden>
+      Déjà un compte ?
+      <button type="button" class="link-btn" id="btn-show-login">Se connecter</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

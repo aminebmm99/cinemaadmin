@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Booking History — CineMax</title>
+  <meta name="description" content="View your past and upcoming movie reservations at CineMax.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="history.css">
+  <link rel="stylesheet" href="../components/navbar/navbar.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body>
+  <main class="history-page">
+    <div class="history-header">
+      <div class="container">
+        <h1>My Bookings</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="historyList" class="history-list">
+        <!-- Loader -->
+        <div class="history-loader">Vous n’avez pas encore de réservations</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section"><h3>CineMax</h3><p>Experience cinema like never before.</p><div class="social-links"><a href="#" class="social-link">Facebook</a><a href="#" class="social-link">X</a><a href="#" class="social-link">Instagram</a><a href="#" class="social-link">YouTube</a></div></div>
+        <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="/CinemaManager/user-interface/frontend/index/index.html" target="_top">Home</a></li><li><a href="../movies/movies.html">Movies</a></li><li><a href="../showtimes/showtimes.html">Showtimes</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-section"><h3>Support</h3><ul><li><a href="#">FAQ</a></li><li><a href="#">Help Center</a></li><li><a href="#">Booking Terms</a></li><li><a href="#">Refund Policy</a></li></ul></div>
+        <div class="footer-section"><h3>Contact</h3><p><strong>Location:</strong> 123 Cinema Street, Tunis</p><p><strong>Phone:</strong> +216 XX XXX XXXX</p><p><strong>Email:</strong> info@cinemax.tn</p><p><strong>Hours:</strong> 9 AM - 12 AM</p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 CineMax. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../data/animations.js"></script>
+  <!-- Navigation Sync Utility -->
+  <script src="../components/nav-sync.js"></script>
+  <script src="../components/navbar-utils.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize navbar UI
+      navbarUtils.updateNavbarUI();
+      navbarUtils.initNavbar();
+    });
+  </script>
+  
+  <script src="history.js"></script>
+</body>
+</html>

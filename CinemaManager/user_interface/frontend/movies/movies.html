@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies — CineMax</title>
+  <meta name="description" content="Browse all movies currently showing and coming soon at CineMax cinema.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="movies.css">
+  <link rel="stylesheet" href="../components/navbar/navbar.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body class="page-layout movies-page">
+  <!-- Page Content -->
+  <div class="page-content navbar-offset">
+    <div class="page-header reveal">
+      <div class="container">
+        <h1>Browse All Movies</h1>
+        <p>Find your next favorite film</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="filters-section reveal">
+        <div class="filter-group">
+          <label for="genreFilter">Genre:</label>
+          <select id="genreFilter" class="filter-select">
+            <option value="">All Genres</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="statusFilter">Status:</label>
+          <select id="statusFilter" class="filter-select">
+            <option value="">All</option>
+            <option value="now">Now Showing</option>
+            <option value="coming">Coming Soon</option>
+          </select>
+        </div>
+
+        <button id="resetFilters" class="btn btn-secondary">Reset Filters</button>
+      </section>
+
+      <div class="results-info">
+        <p id="resultCount">Showing all movies</p>
+      </div>
+
+      <section class="movies-grid" id="moviesGrid"></section>
+
+      <div id="noResults" class="no-results" style="display: none;">
+        <div class="no-results-icon">🎬</div>
+        <h2>No Movies Found</h2>
+        <p>Try adjusting your filters to find more movies</p>
+        <button class="btn btn-primary" id="clearFiltersBtn">Clear All Filters</button>
+      </div>
+    </div>
+  </div><!-- Close page-content -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>CineMax</h3>
+          <p>Experience cinema like never before. Premium movies, premium experience.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">X</a>
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">YouTube</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/CinemaManager/user-interface/frontend/index/index.html" target="_top">Home</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="../showtimes/showtimes.html">Showtimes</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Booking Terms</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><strong>Location:</strong> 123 Cinema Street, Tunis</p>
+          <p><strong>Phone:</strong> +216 XX XXX XXXX</p>
+          <p><strong>Email:</strong> info@cinemax.tn</p>
+          <p><strong>Hours:</strong> 9 AM - 12 AM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CineMax. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Navigation Sync Utility -->
+  <script src="../components/nav-sync.js"></script>
+  <script src="../components/navbar-utils.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize navbar UI
+      navbarUtils.updateNavbarUI();
+      navbarUtils.initNavbar();
+    });
+  </script>
+  
+  <!-- Page Script -->
+  <script src="./movies.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+/* ============================================
+   BOOKING PAGE — CINEMAX PREMIUM
+   ============================================ */
+
+.booking-page {
+  background: var(--primary-dark);
+}
+
+.booking-header {
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.06), rgba(168, 85, 247, 0.06));
+  padding: 2.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.booking-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-premium);
+}
+
+.booking-header h1 {
+  margin-bottom: 0.5rem;
+  font-family: 'Outfit', sans-serif;
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.booking-header .subtitle {
+  font-size: 1.1rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.booking-container {
+  padding-bottom: 3rem;
+}
+
+/* ============================================
+   BOOKING GRID LAYOUT
+   ============================================ */
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.booking-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+}
+
+.booking-card h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ============================================
+   SEAT SELECTION
+   ============================================ */
+
+.hall-info {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.92rem;
+}
+
+.hall-info p {
+  margin-bottom: 0.5rem;
+}
+
+.hall-info span {
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend .seat {
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+.screen {
+  text-align: center;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.15) 20%, rgba(0, 217, 255, 0.3) 50%, rgba(0, 217, 255, 0.15) 80%, transparent 100%);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  font-size: 0.9rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  animation: glow 3s ease-in-out infinite;
+}
+
+.seats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.seat {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 5px 5px 8px 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.seat.available {
+  background: transparent;
+  border-color: rgba(16, 185, 129, 0.4);
+  color: rgba(16, 185, 129, 0.6);
+}
+
+.seat.available:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: scale(1.15);
+}
+
+.seat.reserved {
+  background: rgba(45, 55, 72, 0.4);
+  border-color: rgba(45, 55, 72, 0.4);
+  color: rgba(90, 106, 138, 0.5);
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: var(--primary-dark);
+  font-weight: 800;
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+}
+
+.seat-legend-mobile {
+  display: none;
+  gap: 1rem;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   BOOKING SUMMARY
+   ============================================ */
+
+.sticky-summary {
+  position: sticky;
+  top: 120px;
+}
+
+.summary-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 217, 255, 0.06);
+}
+
+.summary-section h3 {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.summary-value {
+  font-size: 1.05rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.selected-seats-list {
+  min-height: 2.5rem;
+  padding: 0.6rem;
+  background: rgba(0, 217, 255, 0.03);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.seat-badge {
+  background: var(--gradient-blue);
+  color: var(--primary-dark);
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  font-family: 'Outfit', sans-serif;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.price-breakdown {
+  background: rgba(0, 217, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.price-row span:last-child {
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.price-row.total {
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.price-row.total span:last-child {
+  color: var(--accent-cyan);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.terms-text {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--text-tertiary);
+  margin-top: 1rem;
+}
+
+.terms-text a {
+  color: var(--accent-blue);
+}
+
+/* ============================================
+   BOOKING FORM SECTION
+   ============================================ */
+
+.booking-form-section {
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+#bookingForm label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.9rem;
+}
+
+#bookingForm input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  accent-color: var(--accent-blue);
+}
+
+#bookingForm label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+}
+
+/* ============================================
+   RESPONSIVE BOOKING
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+  .sticky-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-header {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .booking-card {
+    padding: 1.5rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
+  }
+  .legend {
+    display: none;
+  }
+  .seat-legend-mobile {
+    display: flex;
+  }
+  .price-breakdown {
+    padding: 1rem;
+  }
+  .booking-container {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-header {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .booking-header h1 {
+    font-size: 1.5rem;
+  }
+  .booking-card {
+    padding: 1rem;
+  }
+  .booking-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .seat {
+    width: 24px;
+    height: 24px;
+    font-size: 0.55rem;
+    border-radius: 3px 3px 5px 5px;
+  }
+  .seat-row {
+    gap: 0.3rem;
+  }
+  .seats-container {
+    gap: 0.4rem;
+  }
+  .summary-section {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .price-breakdown {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .price-row {
+    margin-bottom: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .btn-large {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

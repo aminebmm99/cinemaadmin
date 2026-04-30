@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details — CineMax</title>
+  <meta name="description" content="View movie details, trailers, showtimes and book tickets at CineMax.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="movie-details.css">
+  <link rel="stylesheet" href="../components/navbar/navbar.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body>
+  <main class="movie-details">
+    <section class="movie-banner" id="movieBanner"></section>
+
+    <section class="movie-info-section">
+      <div class="container">
+        <div class="movie-layout">
+          <div class="movie-poster-column">
+            <img id="posterImage" src="" alt="Movie Poster" class="detail-poster">
+          </div>
+          <div class="movie-details-column">
+            <h1 id="movieTitle" class="movie-title"></h1>
+            <div class="movie-meta-info">
+              <div class="meta-item"><span class="label">Genre:</span><span id="movieGenre" class="value"></span></div>
+              <div class="meta-item"><span class="label">Duration:</span><span id="movieDuration" class="value"></span></div>
+              <div class="meta-item"><span class="label">Director:</span><span id="movieDirector" class="value"></span></div>
+              <div class="meta-item"><span class="label">Languages:</span><span id="movieLanguages" class="value"></span></div>
+            </div>
+            <div class="action-buttons">
+              <button class="btn btn-primary btn-large" id="bookTicketsBtn">🎟️ Book Tickets</button>
+              <button class="btn btn-secondary btn-large" id="shareBtn">📤 Share</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section synopsis-section">
+      <div class="container">
+        <h2 class="reveal">Synopsis</h2>
+        <p id="movieDescription" class="synopsis-text reveal"></p>
+      </div>
+    </section>
+
+  
+    <section class="section showtimes-section">
+      <div class="container">
+        <h2 class="reveal">Available Showtimes</h2>
+        <div class="showtimes-controls reveal">
+          <div class="date-selector">
+            <label for="dateSelect">Select Date:</label>
+            <select id="dateSelect" class="form-control"></select>
+          </div>
+        </div>
+        <div class="showtimes-grid" id="showTimesGrid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section"><h3>CineMax</h3><p>Experience cinema like never before.</p>
+          <div class="social-links"><a href="#" class="social-link">Facebook</a><a href="#" class="social-link">X</a><a href="#" class="social-link">Instagram</a><a href="#" class="social-link">YouTube</a></div>
+        </div>
+        <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="/CinemaManager/user-interface/frontend/index/index.html" target="_top">Home</a></li><li><a href="../movies/movies.html">Movies</a></li><li><a href="../showtimes/showtimes.html">Showtimes</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-section"><h3>Support</h3><ul><li><a href="#">FAQ</a></li><li><a href="#">Help Center</a></li><li><a href="#">Booking Terms</a></li><li><a href="#">Refund Policy</a></li></ul></div>
+        <div class="footer-section"><h3>Contact</h3><p><strong>Location:</strong> 123 Cinema Street, Tunis</p><p><strong>Phone:</strong> +216 XX XXX XXXX</p><p><strong>Email:</strong> info@cinemax.tn</p><p><strong>Hours:</strong> 9 AM - 12 AM</p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 CineMax. All rights reserved.</p><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Settings</a></li></ul></div>
+    </div>
+  </footer>
+
+  <script src="../data/animations.js"></script>
+  <!-- Navigation Sync Utility -->
+  <script src="../components/nav-sync.js"></script>
+  <script src="../components/navbar-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize navbar UI
+      navbarUtils.updateNavbarUI();
+      navbarUtils.initNavbar();
+    });
+  </script>
+  <script src="movie-details.js"></script>
+</body>
+</html>

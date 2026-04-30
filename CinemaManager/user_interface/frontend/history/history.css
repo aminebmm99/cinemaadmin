@@ -1,0 +1,131 @@
+.history-page {
+  padding-top: 100px;
+  min-height: 80vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding-bottom: 50px;
+}
+
+.history-header {
+  background: linear-gradient(to right, #111827, #1f2937);
+  padding: 40px 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.history-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #fff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.history-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.history-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.history-poster {
+  width: 100px;
+  height: 150px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.history-details {
+  flex: 1;
+}
+
+.history-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.history-meta {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.Confirmee {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.status-badge.Attente {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.status-badge.Annulee {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.empty-state h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: #9ca3af;
+  margin-bottom: 25px;
+}
+
+.history-loader {
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .history-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .history-meta {
+    justify-content: center;
+  }
+}

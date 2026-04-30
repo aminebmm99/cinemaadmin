@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showtimes — CineMax</title>
+  <meta name="description" content="Check today's showtimes and book your cinema tickets at CineMax.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="showtimes.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body class="page-layout">
+  <!-- Page Content -->
+  <div class="page-content">
+    <main class="showtimes-page">
+    <div class="page-header">
+      <div class="container">
+        <h1>Today's Showtimes</h1>
+        <p>Check available sessions and book your tickets</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="date-selector-section">
+        <h2>Select a Date</h2>
+        <div class="date-buttons" id="dateButtons"></div>
+      </section>
+
+      <section class="showtimes-section">
+        <div id="showTimesContainer"></div>
+        <div id="noShowtimes" class="no-results" style="display: none;">
+          <div class="no-results-icon"></div>
+          <h2>No Showtimes Available</h2>
+          <p>There are no showtimes available for the selected date</p>
+        </div>
+      </section>
+    </div>
+    </main>
+  </div><!-- Close page-content -->
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section"><h3>CineMax</h3><p>Experience cinema like never before.</p><div class="social-links"><a href="#" class="social-link">Facebook</a><a href="#" class="social-link">X</a><a href="#" class="social-link">Instagram</a><a href="#" class="social-link">YouTube</a></div></div>
+        <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="../index/index.html">Home</a></li><li><a href="../movies/movies.html">Movies</a></li><li><a href="../showtimes/showtimes.html">Showtimes</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-section"><h3>Support</h3><ul><li><a href="#">FAQ</a></li><li><a href="#">Help Center</a></li><li><a href="#">Booking Terms</a></li><li><a href="#">Refund Policy</a></li></ul></div>
+        <div class="footer-section"><h3>Contact</h3><p><strong>Location:</strong> 123 Cinema Street, Tunis</p><p><strong>Phone:</strong> +216 XX XXX XXXX</p><p><strong>Email:</strong> info@cinemax.tn</p><p><strong>Hours:</strong> 9 AM - 12 AM</p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 CineMax. All rights reserved.</p><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Settings</a></li></ul></div>
+    </div>
+  </footer>
+
+  <!-- Page Script -->
+  <script src="./showtimes.js"></script>
+</body>
+</html>

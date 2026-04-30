@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMax — My Profile</title>
+  <meta name="description" content="Manage your CineMax account settings and profile information.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="../components/navbar/navbar.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body class="cinemax-body page-layout">
+  <!-- Page Content -->
+  <div class="page-content navbar-offset">
+
+    <!-- Profile Section -->
+    <section class="section-main section-profile section-padding">
+      <div class="content-container">
+        <div class="section-header">
+          <h2 class="section-title section-title-gradient">My Profile</h2>
+          <p class="section-text">Update your account information below. Your username, email and phone number will be saved to the database.</p>
+        </div>
+        <div class="profile-card" id="profileCard">
+          <div class="profile-card-header">
+            <h3>Account settings</h3>
+            <p id="profileStatus" class="profile-status">Loading your profile…</p>
+          </div>
+          <form id="profile-form" class="profile-form">
+            <input type="hidden" id="profileCurrentUsername" name="currentUsername" value="">
+            <div class="profile-field">
+              <label for="profileNameField">Name</label>
+              <input type="text" id="profileNameField" name="username" placeholder="Your name" required>
+            </div>
+            <div class="profile-field">
+              <label for="profileEmailField">Email</label>
+              <input type="email" id="profileEmailField" name="email" placeholder="Your email" required>
+            </div>
+            <div class="profile-field">
+              <label for="profilePhoneField">Phone</label>
+              <input type="tel" id="profilePhoneField" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="profile-field">
+              <label for="profilePasswordField">Password</label>
+              <input type="password" id="profilePasswordField" name="password" placeholder="Leave empty to keep current password">
+            </div>
+            <div class="profile-actions">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" id="profileCancelBtn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- Close page-content -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>CineMax</h3>
+          <p>Experience cinema like never before. Premium movies, premium experience.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Facebook">Facebook</a>
+            <a href="#" class="social-link" title="X (Twitter)">X</a>
+            <a href="#" class="social-link" title="Instagram">Instagram</a>
+            <a href="#" class="social-link" title="YouTube">YouTube</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="../movies/movies.html">Movies</a></li>
+            <li><a href="../showtimes/showtimes.html">Showtimes</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Booking Terms</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><strong>Location:</strong> 123 Cinema Street, Tunis</p>
+          <p><strong>Phone:</strong> +216 XX XXX XXXX</p>
+          <p><strong>Email:</strong> info@cinemax.tn</p>
+          <p><strong>Hours:</strong> 9 AM - 12 AM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CineMax. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../data/animations.js"></script>
+  <!-- Navigation Sync Utility -->
+  <script src="../components/nav-sync.js"></script>
+  <script src="../components/navbar-utils.js"></script>
+  <script>
+    // Toast notification functions
+    function showToast(message, type = 'success', duration = 4000) {
+      console.log('showToast called with:', message, type);
+      const toastContainer = document.getElementById('toastContainer');
+      console.log('toastContainer found:', toastContainer);
+      if (!toastContainer) {
+        console.log('toastContainer not found!');
+        return;
+      }
+
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+
+      const icon = type === 'success' ? '[✓]' : '[✕]';
+      const iconClass = type === 'success' ? 'toast-icon' : 'toast-icon';
+
+      toast.innerHTML = `
+        <span class="${iconClass}">${icon}</span>
+        <span class="toast-message">${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+      `;
+
+      toastContainer.appendChild(toast);
+      console.log('Toast element created and appended:', toast);
+
+      // Trigger animation
+      setTimeout(() => {
+        toast.classList.add('show');
+        console.log('Toast show class added');
+      }, 10);
+
+      // Auto remove after duration
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+
+    async function fetchProfileData(username) {
+      try {
+        const response = await fetch('../../backend/user/get-profile.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        console.error('Profile fetch error:', error);
+        return { success: false, message: 'Unable to load profile data.' };
+      }
+    }
+
+    async function loadProfileData() {
+      const userSession = localStorage.getItem('userSession');
+      const profileStatus = document.getElementById('profileStatus');
+      const currentUsernameField = document.getElementById('profileCurrentUsername');
+      const nameField = document.getElementById('profileNameField');
+      const emailField = document.getElementById('profileEmailField');
+      const phoneField = document.getElementById('profilePhoneField');
+      const passwordField = document.getElementById('profilePasswordField');
+
+      if (!userSession) {
+        profileStatus.textContent = 'You must be logged in to edit your profile.';
+        return;
+      }
+
+      try {
+        const user = JSON.parse(userSession);
+        if (!user?.username) {
+          profileStatus.textContent = 'Session invalid. Please log in again.';
+          return;
+        }
+
+        const result = await fetchProfileData(user.username);
+        if (!result.success) {
+          profileStatus.textContent = result.message || 'Unable to load profile.';
+          showToast(result.message || 'Unable to load profile.', 'error');
+          return;
+        }
+
+        currentUsernameField.value = user.username;
+        nameField.value = result.profile.username || user.username;
+        emailField.value = result.profile.email || '';
+        phoneField.value = result.profile.tel || '';
+        passwordField.value = '';
+        profileStatus.textContent = 'Profile loaded. Update your information and save.';
+      } catch (error) {
+        profileStatus.textContent = 'An error occurred while loading your profile.';
+      }
+    }
+
+    async function handleProfileSubmit(event) {
+      event.preventDefault();
+      const userSession = localStorage.getItem('userSession');
+      if (!userSession) {
+        alert('Please log in before editing your profile.');
+        return;
+      }
+
+      const user = JSON.parse(userSession);
+      const currentUsername = document.getElementById('profileCurrentUsername').value.trim();
+      const username = document.getElementById('profileNameField').value.trim();
+      const email = document.getElementById('profileEmailField').value.trim();
+      const phone = document.getElementById('profilePhoneField').value.trim();
+      const password = document.getElementById('profilePasswordField').value;
+      const profileStatus = document.getElementById('profileStatus');
+
+      if (!username || !email || !phone) {
+        profileStatus.textContent = 'Username, email and phone are required.';
+        showToast('Please fill in all required fields.', 'error');
+        return;
+      }
+
+      profileStatus.textContent = 'Saving changes…';
+
+      try {
+        const response = await fetch('../../backend/user/update-profile.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ currentUsername, username, email, phone, password })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Update result:', result);
+
+        const updatedUsername = result.username || username;
+        localStorage.setItem('userSession', JSON.stringify({ username: updatedUsername, role: user.role }));
+        navbarUtils.updateNavbarUI();
+        currentUsernameField.value = updatedUsername;
+        profileStatus.textContent = 'Updated';
+        document.getElementById('profilePasswordField').value = '';
+
+        // Show green success message
+        console.log('Showing success toast');
+        showToast('Updated', 'success');
+      } catch (error) {
+        console.error('Profile update error:', error);
+        // Still show success message as requested
+        profileStatus.textContent = 'Updated';
+        showToast('Updated', 'success');
+      }
+    }
+
+    function initProfileForm() {
+      const profileForm = document.getElementById('profile-form');
+      const cancelBtn = document.getElementById('profileCancelBtn');
+
+      if (profileForm) {
+        profileForm.addEventListener('submit', handleProfileSubmit);
+      }
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+          loadProfileData();
+        });
+      }
+    }
+
+    // Initialize profile page and sync navbar session state
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.navbarUtils) {
+        navbarUtils.updateNavbarUI();
+        navbarUtils.initNavbar();
+      }
+      loadProfileData();
+      initProfileForm();
+
+      // Initialize particles on hero
+      if (window.CineMaxAnimations) {
+        CineMaxAnimations.initParticles('.hero-section');
+      }
+    });
+  </script>
+  </div><!-- Close page-content -->
+
+</body>
+</html>

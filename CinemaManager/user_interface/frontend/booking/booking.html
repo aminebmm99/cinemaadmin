@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Tickets — CineMax</title>
+  <meta name="description" content="Reserve your cinema tickets and complete your booking at CineMax.">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="booking.css">
+  <link rel="stylesheet" href="../components/navbar/navbar.css">
+  <link rel="stylesheet" href="../components/footer/footer.css">
+</head>
+<body class="page-layout">
+  <!-- Page Content -->
+  <div class="page-content navbar-offset">
+    <main class="booking-page">
+    <div class="booking-header">
+      <div class="container">
+        <h1>Reserve Your Tickets</h1>
+        <p id="movieTitle" class="subtitle"></p>
+      </div>
+    </div>
+
+    <div class="container booking-container">
+      <div class="booking-grid">
+        <div class="seat-selection-column">
+          <div class="booking-card">
+            <h2>Ticket Details</h2>
+            <div class="hall-info" style="margin-bottom: 20px;">
+              <p>Hall: <strong id="hallName"></strong></p>
+            </div>
+            <div class="form-group">
+                <label for="ticketCountInput" style="font-size: 1.1rem; font-weight: bold; display: block; margin-bottom: 10px;">Number of Tickets:</label>
+                <input type="number" id="ticketCountInput" class="form-control" min="1" max="10" value="1" style="font-size: 1.2rem; padding: 10px; max-width: 150px;">
+            </div>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">Select up to 10 tickets per booking.</p>
+          </div>
+
+          <div class="booking-card" style="margin-top: 20px;">
+            <h2>Your Information</h2>
+            <form id="bookingForm">
+              <div class="form-row">
+                <div class="form-group"><label for="fullName">Full Name *</label><input type="text" id="fullName" name="fullName" class="form-control" required></div>
+                <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" class="form-control" required></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" class="form-control" required></div>
+                <div class="form-group"><label for="paymentMethod">Payment Method *</label>
+                  <select id="paymentMethod" name="paymentMethod" class="form-control" required disabled>
+                    <option value="cash" selected>Cash in Cinema</option>
+                  </select>
+                  <small style="color: #aaa; display:block; margin-top:5px;">Only cash payment on arrival is supported.</small>
+                </div>
+              </div>
+              <div class="form-group"><label><input type="checkbox" id="agreeTerms" required> I agree to the terms and conditions</label></div>
+            </form>
+          </div>
+        </div>
+
+        <div class="booking-summary-column">
+          <div class="booking-card sticky-summary">
+            <h2>Booking Summary</h2>
+            <div class="summary-section"><h3>Movie</h3><p id="summaryMovieTitle" class="summary-value"></p></div>
+            <div class="summary-section"><h3>Date & Time</h3><p id="summaryDateTime" class="summary-value"></p></div>
+            <div class="price-breakdown" style="border-top: none;">
+              <div class="price-row"><span>Ticket Price</span><span id="seatPrice">0.000TND</span></div>
+              <div class="price-row"><span>Number of Tickets</span><span id="numSeats">1</span></div>
+              <div class="price-row total" style="margin-top: 15px;"><span>Total Price</span><span id="totalPrice">0.000TND</span></div>
+            </div>
+            <button class="btn btn-success btn-block btn-large mt-md" id="submitBookingBtn">Complete Reservation</button>
+            <p class="terms-text">By continuing, you confirm your attendance and agree to pay upon arrival.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </div><!-- Close page-content -->
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section"><h3>CineMax</h3><p>Experience cinema like never before.</p><div class="social-links"><a href="#" class="social-link">Facebook</a><a href="#" class="social-link">X</a><a href="#" class="social-link">Instagram</a><a href="#" class="social-link">YouTube</a></div></div>
+        <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="/CinemaManager/user-interface/frontend/index/index.html" target="_top">Home</a></li><li><a href="../movies/movies.html">Movies</a></li><li><a href="../showtimes/showtimes.html">Showtimes</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-section"><h3>Support</h3><ul><li><a href="#">FAQ</a></li><li><a href="#">Help Center</a></li><li><a href="#">Booking Terms</a></li><li><a href="#">Refund Policy</a></li></ul></div>
+        <div class="footer-section"><h3>Contact</h3><p><strong>Location:</strong> 123 Cinema Street, Tunis</p><p><strong>Phone:</strong> +216 XX XXX XXXX</p><p><strong>Email:</strong> info@cinemax.tn</p><p><strong>Hours:</strong> 9 AM - 12 AM</p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 CineMax. All rights reserved.</p><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Settings</a></li></ul></div>
+    </div>
+  </footer>
+
+  <script src="../data/animations.js"></script>
+  <!-- Navigation Sync Utility -->
+  <script src="../components/nav-sync.js"></script>
+  <script src="../components/navbar-utils.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize navbar UI
+      navbarUtils.updateNavbarUI();
+      navbarUtils.initNavbar();
+    });
+  </script>
+  
+  <!-- Page Script -->
+  <script src="./booking.js"></script>
+</body>
+</html>
